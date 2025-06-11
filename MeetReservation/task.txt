@@ -1,9 +1,9 @@
-- Criar um projeto .NET de API chamado meet-reservation
+x Criar um projeto .NET de API chamado meet-reservation
 
-- Criar o BasEntity
-    - Id (GUID)
-    - CreateAt (Datetime)
-    - UpdateAt (Datetime)
+x Criar o BasEntity
+    x Id (GUID)
+    x CreateAt (Datetime)
+    x UpdateAt (Datetime)
 
 - Criar a class de RegisterMeetCommand
     - Responsible (String, required, estipular um limite para String)
