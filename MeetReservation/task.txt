@@ -5,13 +5,17 @@ x Criar o BasEntity
     x CreateAt (Datetime)
     x UpdateAt (Datetime)
 
-- Criar a class de RegisterMeetCommand
-    - Responsible (String, required, estipular um limite para String)
+x Criar a class de RegisterMeetCommand
+    x Responsible (String)
+    x Room (Number)
+    x StartTime (DateTime)
+    x EndTime (DateTime)
+
+- Criar a MeetEntity que herda de BasEntity
+    - Responsible (String, required)
     - Room (Number, required)
     - StartTime (DateTime, required)
     - EndTime (DateTime, required)
-
-- Criar a MeetEntity que herda de BasEntity e RegisterMeetCommand
 
 - Criar uma exception de BusyRoomException
  
@@ -81,4 +85,4 @@ Instalar e configurar o MediatR
     - Cadastro de controller sem os dados obrigatorios (Tenho que mapear se consigo fazer isso funcionar)
         - Enviar usando o theory parametros sempre faltando um dado requerido do RegisterMeetCommand
         - Ele tem que chamar a função RegisterMeet da controller
-        - Em todos os casos tem que dar erro
+        - Em todos os casos tem que dar erro e ver se retornar a mensagem de erro correta.
