@@ -1,0 +1,84 @@
+- Criar um projeto .NET de API chamado meet-reservation
+
+- Criar o BasEntity
+    - Id (GUID)
+    - CreateAt (Datetime)
+    - UpdateAt (Datetime)
+
+- Criar a class de RegisterMeetCommand
+    - Responsible (String, required, estipular um limite para String)
+    - Room (Number, required)
+    - StartTime (DateTime, required)
+    - EndTime (DateTime, required)
+
+- Criar a MeetEntity que herda de BasEntity e RegisterMeetCommand
+
+- Criar uma exception de BusyRoomException
+ 
+- Configurar o bd, que será o sqlite mesmo
+    - Configurar o UpdateAt automatico
+
+Instalar e configurar o MediatR
+
+- Repository
+    - Criar a interface IMeetRepository
+        - Método AddMeet (Recebe por param o tipo RegisterMeetCommand e é void)
+        - Método ListMeet (retornar List de MeetEntity)
+    - Criar um MeetRepository que herda IMeetRepository
+        - Configurar o contexto
+        - No método AddMeet
+            - No try tenho que verificar usando o método Any do EF se o número do Room está sendo usado durante o StartTime e o EndTime
+                - Se estiver sendo usado mando uma BusyRoomException
+                - Senão eu só cadastro o meet
+            - No catch eu coloco um throw generico
+        - No método ListMeet
+            - No try só busco por todas as reuniões cadastradas no bd
+            - No catch eu coloco um throw generico
+
+- Cadastrar nova reserva
+    - Command (RegisterMeetCommand) que já deve está criado
+    - Handler (RegisterMeetCommandHandler)
+        - Ele esperar receber do tipo RegisterMeetCommand e não retornar nada
+        - Chama o método AddMeet do Repository, passando os valores necessarios
+    - Controller (MeetController => RegisterMeet)
+        - Configurar a controller
+        - Na controller espera receber do tipo RegisterMeetCommand
+        - No try
+            - O send do tipo RegisterMeetCommand
+            - Dando tudo certo, retornar um 200, informando que o cadastro foi feito com sucesso
+        - No catch de BusyRoomException
+            - Retornar um erro de 409 referente a conflito com a mensagem "Sala ocupada durante esse periodo, tente outra sala ou um outro horário"
+        - No catch generico
+            - Retornar um badRequest
+
+- Listar as reservas criadas
+    - Query (ListAllMeetQuery)
+        - Retornar List de MeetEntity
+    - Handler (ListAllMeetQueryHandler)
+        - Espera receber ListAllMeetQuery e retornar List de ListAllMeetQuery
+        - Chama o método ListMeet do repository
+    - Controller (MeetController => ListAllMeet)
+        - No try
+            - No send envia o tipo ListAllMeetQuery
+            - Dando tudo certo retornar 200 com a lista de reunião
+        - No catch generico
+            - Retornar um badRequest
+
+- Teste manual
+    - Ao atualizar um dado ver se o update atualizou
+
+    - Cadastro de controller bem sucedido
+        - Cadastrar 2 reuniões em horarios diferentes com valores certos deve retornar tudo certo
+        - Cadastrar 2 reunião em horario iguais mas com o número da sala diferente
+
+    - Cadastro de controller com BusyRoomException
+        - Cadastrar uma sala em um horario já cadastrado daquela sala
+
+    - Listar reuniões
+        - Chamar o método ListAllMeet da Controller
+
+- Testes XUnit
+    - Cadastro de controller sem os dados obrigatorios (Tenho que mapear se consigo fazer isso funcionar)
+        - Enviar usando o theory parametros sempre faltando um dado requerido do RegisterMeetCommand
+        - Ele tem que chamar a função RegisterMeet da controller
+        - Em todos os casos tem que dar erro
