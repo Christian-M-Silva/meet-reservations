@@ -11,11 +11,11 @@ x Criar a class de RegisterMeetCommand
     x StartTime (DateTime)
     x EndTime (DateTime)
 
-- Criar a MeetEntity que herda de BasEntity
-    - Responsible (String, required)
-    - Room (Number, required)
-    - StartTime (DateTime, required)
-    - EndTime (DateTime, required)
+x Criar a MeetEntity que herda de BasEntity
+    x Responsible (String, required)
+    x Room (Number, required)
+    x StartTime (DateTime, required)
+    x EndTime (DateTime, required)
 
 - Criar uma exception de BusyRoomException
  
