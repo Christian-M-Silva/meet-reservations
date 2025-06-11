@@ -17,7 +17,7 @@ x Criar a MeetEntity que herda de BasEntity
     x StartTime (DateTime, required)
     x EndTime (DateTime, required)
 
-- Criar uma exception de BusyRoomException
+x Criar uma exception de BusyRoomException
  
 - Configurar o bd, que será o sqlite mesmo
     - Configurar o UpdateAt automatico
