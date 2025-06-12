@@ -2,7 +2,7 @@
 using MeetReservation.Models.Commands;
 using MeetReservation.Repository.Interfaces;
 
-namespace MeetReservation.Handler
+namespace MeetReservation.Handlers
 {
     public class RegisterMeetCommandHandler(IMeetRepository meetRepository) : IRequestHandler<RegisterMeetCommand>
     {

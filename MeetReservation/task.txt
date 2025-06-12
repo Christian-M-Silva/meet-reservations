@@ -55,12 +55,12 @@ x Cadastrar nova reserva
         x No catch generico
             x Retornar um badRequest
 
-- Listar as reservas criadas
-    - Query (ListAllMeetQuery)
-        - Retornar List de MeetEntity
-    - Handler (ListAllMeetQueryHandler)
-        - Espera receber ListAllMeetQuery e retornar List de ListAllMeetQuery
-        - Chama o método ListMeet do repository
+x Listar as reservas criadas
+    x Query (ListAllMeetQuery)
+        x Retornar List de MeetEntity
+    x Handler (ListAllMeetQueryHandler)
+        x Espera receber ListAllMeetQuery e retornar List de MeetEntity
+        x Chama o método ListMeet do repository
     - Controller (MeetController => ListAllMeet)
         - No try
             - No send envia o tipo ListAllMeetQuery
