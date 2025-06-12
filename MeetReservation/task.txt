@@ -19,10 +19,10 @@ x Criar a MeetEntity que herda de BasEntity
 
 x Criar uma exception de BusyRoomException
  
-- Configurar o bd, que será o sqlite mesmo (ERRO NA ULTIMA ETAPA AQUI AO RODAR dotnet ef database update)
-    - Configurar o UpdateAt automatico
+x Configurar o bd, que será o sqlite mesmo
+    x Configurar o UpdateAt automatico
 
-Instalar e configurar o MediatR
+x Instalar e configurar o MediatR
 
 - Repository
     - Criar a interface IMeetRepository
