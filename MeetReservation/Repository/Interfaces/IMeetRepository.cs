@@ -6,6 +6,6 @@ namespace MeetReservation.Repository.Interfaces
     public interface IMeetRepository
     {
         public Task AddMeet(RegisterMeetCommand meet);
-        public Task<IEnumerable<MeetEntity>> ListMeet(RegisterMeetCommand meet);
+        public Task<IEnumerable<MeetEntity>> ListMeet();
     }
 }

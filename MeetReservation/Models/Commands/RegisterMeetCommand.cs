@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MediatR;
+using System.ComponentModel.DataAnnotations;
 
 namespace MeetReservation.Models.Commands
 {
-    public class RegisterMeetCommand
+    public class RegisterMeetCommand: IRequest
     {
         public string Responsible { get; set; } = string.Empty;
         public int Room { get; set; }

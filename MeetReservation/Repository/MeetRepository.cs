@@ -36,7 +36,7 @@ namespace MeetReservation.Repository
             }
         }
 
-        public async Task<IEnumerable<MeetEntity>> ListMeet(RegisterMeetCommand meet)
+        public async Task<IEnumerable<MeetEntity>> ListMeet()
         {
             try
             {

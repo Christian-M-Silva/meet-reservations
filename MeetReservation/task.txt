@@ -40,10 +40,10 @@ x Repository
             x No catch eu coloco um throw generico
 
 - Cadastrar nova reserva
-    - Command (RegisterMeetCommand) que já deve está criado
-    - Handler (RegisterMeetCommandHandler)
-        - Ele esperar receber do tipo RegisterMeetCommand e não retornar nada
-        - Chama o método AddMeet do Repository, passando os valores necessarios
+    x Command (RegisterMeetCommand) que já deve está criado
+    X Handler (RegisterMeetCommandHandler)
+        X Ele esperar receber do tipo RegisterMeetCommand e não retornar nada
+        x Chama o método AddMeet do Repository, passando os valores necessarios
     - Controller (MeetController => RegisterMeet)
         - Configurar a controller
         - Na controller espera receber do tipo RegisterMeetCommand
@@ -67,6 +67,8 @@ x Repository
             - Dando tudo certo retornar 200 com a lista de reunião
         - No catch generico
             - Retornar um badRequest
+
+- Configurar a injeção de dependência
 
 - Swagger
 
