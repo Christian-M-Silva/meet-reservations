@@ -24,20 +24,20 @@ x Configurar o bd, que será o sqlite mesmo
 
 x Instalar e configurar o MediatR
 
-- Repository
-    - Criar a interface IMeetRepository
-        - Método AddMeet (Recebe por param o tipo RegisterMeetCommand e é void)
-        - Método ListMeet (retornar List de MeetEntity)
-    - Criar um MeetRepository que herda IMeetRepository
-        - Configurar o contexto
-        - No método AddMeet
-            - No try tenho que verificar usando o método Any do EF se o número do Room está sendo usado durante o StartTime e o EndTime
-                - Se estiver sendo usado mando uma BusyRoomException
-                - Senão eu só cadastro o meet
-            - No catch eu coloco um throw generico
-        - No método ListMeet
-            - No try só busco por todas as reuniões cadastradas no bd
-            - No catch eu coloco um throw generico
+x Repository
+    x Criar a interface IMeetRepository
+        x Método AddMeet (Recebe por param o tipo RegisterMeetCommand e é void)
+        X Método ListMeet (retornar List de MeetEntity)
+    x Criar um MeetRepository que herda IMeetRepository
+        x Configurar o contexto
+        x No método AddMeet
+            x No try tenho que verificar usando o método Any do EF se o número do Room está sendo usado durante o StartTime e o EndTime
+                x Se estiver sendo usado mando uma BusyRoomException
+                x Senão eu só cadastro o meet
+            x No catch eu coloco um throw generico
+        x No método ListMeet
+            x No try só busco por todas as reuniões cadastradas no bd
+            x No catch eu coloco um throw generico
 
 - Cadastrar nova reserva
     - Command (RegisterMeetCommand) que já deve está criado
