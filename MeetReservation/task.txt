@@ -39,21 +39,21 @@ x Repository
             x No try só busco por todas as reuniões cadastradas no bd
             x No catch eu coloco um throw generico
 
-- Cadastrar nova reserva
+x Cadastrar nova reserva
     x Command (RegisterMeetCommand) que já deve está criado
     X Handler (RegisterMeetCommandHandler)
         X Ele esperar receber do tipo RegisterMeetCommand e não retornar nada
         x Chama o método AddMeet do Repository, passando os valores necessarios
-    - Controller (MeetController => RegisterMeet)
-        - Configurar a controller
-        - Na controller espera receber do tipo RegisterMeetCommand
-        - No try
-            - O send do tipo RegisterMeetCommand
-            - Dando tudo certo, retornar um 200, informando que o cadastro foi feito com sucesso
-        - No catch de BusyRoomException
-            - Retornar um erro de 409 referente a conflito com a mensagem "Sala ocupada durante esse periodo, tente outra sala ou um outro horário"
-        - No catch generico
-            - Retornar um badRequest
+    x Controller (MeetController => RegisterMeet)
+        x Configurar a controller
+        x Na controller espera receber do tipo RegisterMeetCommand
+        x No try
+            x O send do tipo RegisterMeetCommand
+            x Dando tudo certo, retornar um 200, informando que o cadastro foi feito com sucesso
+        x No catch de BusyRoomException
+            x Retornar um erro de 409 referente a conflito com a mensagem "Sala ocupada durante esse periodo, tente outra sala ou um outro horário"
+        x No catch generico
+            x Retornar um badRequest
 
 - Listar as reservas criadas
     - Query (ListAllMeetQuery)
