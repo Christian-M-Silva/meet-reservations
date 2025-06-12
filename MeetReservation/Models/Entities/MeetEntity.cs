@@ -1,7 +1,6 @@
-﻿using MeetReservation.Models.Entities;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace MeetReservation.Models.Commands
+namespace MeetReservation.Models.Entities
 {
     public class MeetEntity: BaseEntity
     {
