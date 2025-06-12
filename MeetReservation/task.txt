@@ -19,7 +19,7 @@ x Criar a MeetEntity que herda de BasEntity
 
 x Criar uma exception de BusyRoomException
  
-- Configurar o bd, que será o sqlite mesmo
+- Configurar o bd, que será o sqlite mesmo (ERRO NA ULTIMA ETAPA AQUI AO RODAR dotnet ef database update)
     - Configurar o UpdateAt automatico
 
 Instalar e configurar o MediatR
@@ -67,6 +67,8 @@ Instalar e configurar o MediatR
             - Dando tudo certo retornar 200 com a lista de reunião
         - No catch generico
             - Retornar um badRequest
+
+- Swagger
 
 - Teste manual
     - Ao atualizar um dado ver se o update atualizou
