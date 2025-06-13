@@ -70,7 +70,7 @@ x Listar as reservas criadas
 
 x Configurar a injeção de dependência
 
-- Swagger
+x Swagger
 
 - Teste manual
     - Ao atualizar um dado ver se o update atualizou
