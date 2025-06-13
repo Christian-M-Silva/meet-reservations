@@ -68,7 +68,7 @@ x Listar as reservas criadas
         x No catch generico
             x Retornar um badRequest
 
-- Configurar a injeção de dependência
+x Configurar a injeção de dependência
 
 - Swagger
 

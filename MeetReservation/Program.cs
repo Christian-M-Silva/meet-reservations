@@ -1,4 +1,6 @@
 using MeetReservation;
+using MeetReservation.Repository;
+using MeetReservation.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -14,6 +16,8 @@ builder.Services.AddDbContext<MyDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
+builder.Services.AddScoped<IMeetRepository, MeetRepository>();
 
 var app = builder.Build();
 
