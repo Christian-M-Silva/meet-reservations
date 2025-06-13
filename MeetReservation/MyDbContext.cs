@@ -14,11 +14,18 @@ namespace MeetReservation
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
+            var now = DateTime.UtcNow;
+
             foreach (var entry in ChangeTracker.Entries<BaseEntity>())
             {
-                if (entry.State == EntityState.Modified)
+                if (entry.State == EntityState.Added)
                 {
-                    entry.Entity.UpdatedAt = DateTime.Now;
+                    entry.Entity.CreatedAt = now;
+                    entry.Entity.UpdatedAt = now;
+                }
+                else if (entry.State == EntityState.Modified)
+                {
+                    entry.Entity.UpdatedAt = now;
                 }
             }
 

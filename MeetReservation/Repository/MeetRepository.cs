@@ -30,9 +30,9 @@ namespace MeetReservation.Repository
 
                 await _myDbContext.SaveChangesAsync();
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                throw new Exception(err.Message);
+                throw;
             }
         }
 

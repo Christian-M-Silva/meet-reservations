@@ -72,18 +72,16 @@ x Configurar a injeção de dependência
 
 x Swagger
 
-- Teste manual
-    - Ao atualizar um dado ver se o update atualizou
+x Teste manual
+    x Cadastro de controller bem sucedido
+        x Cadastrar 2 reuniões em horarios diferentes com valores certos deve retornar tudo certo
+        x Cadastrar 2 reunião em horario iguais mas com o número da sala diferente
 
-    - Cadastro de controller bem sucedido
-        - Cadastrar 2 reuniões em horarios diferentes com valores certos deve retornar tudo certo
-        - Cadastrar 2 reunião em horario iguais mas com o número da sala diferente
+    x Cadastro de controller com BusyRoomException
+        x Cadastrar uma sala em um horario já cadastrado daquela sala
 
-    - Cadastro de controller com BusyRoomException
-        - Cadastrar uma sala em um horario já cadastrado daquela sala
-
-    - Listar reuniões
-        - Chamar o método ListAllMeet da Controller
+    x Listar reuniões
+        x Chamar o método ListAllMeet da Controller
 
 - Testes XUnit
     - Cadastro de controller sem os dados obrigatorios (Tenho que mapear se consigo fazer isso funcionar)
