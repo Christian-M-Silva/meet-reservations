@@ -96,10 +96,10 @@ x Teste XUnit
             x Verifica se o retorno é 200
             x Verifica se o método foi chamado só uma vez
 
-        - Testar o RegisterMeet com retorno 409
-            - Fazer o setup do mock do MediatR ele tem que retornar uma BusyRoomException
-            - Chama o Controller com o método RegisterMeet passando o RegisterMeetCommand
-            - Verifica se o retorno é 409 com a mensagem "Sala ocupada durante esse periodo, tente outra sala ou um outro horário"
+        x Testar o RegisterMeet com retorno 409
+            x Fazer o setup do mock do MediatR ele tem que retornar uma BusyRoomException
+            x Chama o Controller com o método RegisterMeet passando o RegisterMeetCommand
+            x Verifica se o retorno é 409 com a mensagem "Sala ocupada durante esse periodo, tente outra sala ou um outro horário"
 
         x Testar o RegisterMeet com retorno 400
             x Fazer o setup do mock do MediatR ele tem que retornar uma exception generica

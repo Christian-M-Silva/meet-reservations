@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MeetReservation.Controllers;
+using MeetReservation.Exceptions;
 using MeetReservation.Models.Commands;
 using MeetReservation.Models.Entities;
 using MeetReservation.Models.Queries;
@@ -86,6 +87,19 @@ namespace TestMeetReservation
 
             Assert.IsType<BadRequestObjectResult>(result);
 
+        }
+
+        [Fact]
+        public async Task RegisterMeetFluxoErroSalaOcupadaRetornarBusyRoomException()
+        {
+            _mediator.Setup(m => m.Send(meetCommand, It.IsAny<CancellationToken>()))
+                .ThrowsAsync(new BusyRoomException());
+
+            ActionResult result = await _meetController.RegisterMeet(meetCommand);
+
+            ConflictObjectResult response = Assert.IsType<ConflictObjectResult>(result);
+
+            Assert.Equal("Sala ocupada durante esse periodo, tente outra sala ou um outro horário", response.Value);
         }
     }
 }
