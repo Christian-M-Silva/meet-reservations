@@ -84,17 +84,17 @@ x Teste XUnit
             x Verifica se a lista é igual a lista criada
             x Verifica se com o .verify se o método foi chamado só uma vez
 
-        - Testar o ListAllMeet com retorno 400
-            - Fazer o setup do mock do MediatR ele tem que retornar uma exception generica
-            - Chama o Controller com o método ListAllMeet
-            - Verifica se o retorno é 400
+        x Testar o ListAllMeet com retorno 400
+            x Fazer o setup do mock do MediatR ele tem que retornar uma exception generica
+            x Chama o Controller com o método ListAllMeet
+            x Verifica se o retorno é 400
 
-        - Testar o RegisterMeet com retorno 200
-            - Criar um RegisterMeetCommand que será o objeto a ser cadastrado
-            - Fazer o setup do mock do MediatR ele tem que retornar null
-            - Chama o Controller com o método RegisterMeet passando o RegisterMeetCommand
-            - Verifica se o retorno é 200
-            - Verifica se o método foi chamado só uma vez
+        x Testar o RegisterMeet com retorno 200
+            x Criar um RegisterMeetCommand que será o objeto a ser cadastrado
+            x Fazer o setup do mock do MediatR ele tem que retornar null
+            x Chama o Controller com o método RegisterMeet passando o RegisterMeetCommand
+            x Verifica se o retorno é 200
+            x Verifica se o método foi chamado só uma vez
 
         - Testar o RegisterMeet com retorno 409
             - Fazer o setup do mock do MediatR ele tem que retornar uma BusyRoomException

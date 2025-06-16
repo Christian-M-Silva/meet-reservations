@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MeetReservation.Controllers;
+using MeetReservation.Models.Commands;
 using MeetReservation.Models.Entities;
 using MeetReservation.Models.Queries;
 using Microsoft.AspNetCore.Mvc;
@@ -42,6 +43,39 @@ namespace TestMeetReservation
             Assert.Equal(meetingsExpected, meetings.Value);
 
             _mediator.Verify(m => m.Send(It.IsAny<ListAllMeetQuery>(), It.IsAny<CancellationToken>()), Times.Once);
+        }
+
+        [Fact]
+        public async Task ListAllMeetFluxoErroGnericoRetornarBadRequest() 
+        {
+            _mediator.Setup(m => m.Send(It.IsAny<ListAllMeetQuery>(), It.IsAny<CancellationToken>()))
+                .ThrowsAsync(new Exception("Erro inesperado"));
+
+               ActionResult result = await _meetController.ListAllMeet();
+    
+                Assert.IsType<BadRequestObjectResult>(result);
+    
+        }
+
+        [Fact]
+        public async Task RegisterMeetFluxoCertoRetornarOk()
+        {
+            RegisterMeetCommand meetCommand = new()
+            {
+                Responsible = "Christian",
+                Room = 1,
+                StartTime = DateTime.Now,
+                EndTime = DateTime.Now.AddHours(1)
+            };
+
+            _mediator.Setup(m => m.Send(meetCommand, It.IsAny<CancellationToken>()))
+                .Verifiable();
+
+            ActionResult result = await _meetController.RegisterMeet(meetCommand);
+
+            Assert.IsType<OkObjectResult>(result);
+
+            _mediator.Verify(m => m.Send(meetCommand, It.IsAny<CancellationToken>()), Times.Once);
         }
     }
 }
