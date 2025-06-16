@@ -36,7 +36,7 @@ namespace MeetReservation.Controllers
         {
             try
             {
-                 await _mediator.Send(meet);
+                await _mediator.Send(meet);
                 return Ok("Reunião agendada com sucesso");
             }
             catch (BusyRoomException)

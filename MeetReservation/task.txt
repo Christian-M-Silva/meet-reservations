@@ -72,19 +72,38 @@ x Configurar a injeção de dependência
 
 x Swagger
 
-x Teste manual
-    x Cadastro de controller bem sucedido
-        x Cadastrar 2 reuniões em horarios diferentes com valores certos deve retornar tudo certo
-        x Cadastrar 2 reunião em horario iguais mas com o número da sala diferente
+x Teste XUnit
+    x Mokar o mediatR
+    x Inicializar o controller e o mock
+    x Testar Controllers
+        x Testar o ListAllMeet com retorno 200
+            x Criar lista de MeetEntity
+            x Fazer o setup do mock do MediatR ele tem que retornar uma lista de MeetEntity
+            x Chama o Controller
+            x Verifica se o retorno é 200
+            x Verifica se a lista é igual a lista criada
+            x Verifica se com o .verify se o método foi chamado só uma vez
 
-    x Cadastro de controller com BusyRoomException
-        x Cadastrar uma sala em um horario já cadastrado daquela sala
+        - Testar o ListAllMeet com retorno 400
+            - Fazer o setup do mock do MediatR ele tem que retornar uma exception generica
+            - Chama o Controller com o método ListAllMeet
+            - Verifica se o retorno é 400
 
-    x Listar reuniões
-        x Chamar o método ListAllMeet da Controller
+        - Testar o RegisterMeet com retorno 200
+            - Criar um RegisterMeetCommand que será o objeto a ser cadastrado
+            - Fazer o setup do mock do MediatR ele tem que retornar null
+            - Chama o Controller com o método RegisterMeet passando o RegisterMeetCommand
+            - Verifica se o retorno é 200
+            - Verifica se o método foi chamado só uma vez
 
-- Testes XUnit
-    - Cadastro de controller sem os dados obrigatorios (Tenho que mapear se consigo fazer isso funcionar)
-        - Enviar usando o theory parametros sempre faltando um dado requerido do RegisterMeetCommand
-        - Ele tem que chamar a função RegisterMeet da controller
-        - Em todos os casos tem que dar erro e ver se retornar a mensagem de erro correta.
+        - Testar o RegisterMeet com retorno 409
+            - Fazer o setup do mock do MediatR ele tem que retornar uma BusyRoomException
+            - Chama o Controller com o método RegisterMeet passando o RegisterMeetCommand
+            - Verifica se o retorno é 409 com a mensagem "Sala ocupada durante esse periodo, tente outra sala ou um outro horário"
+
+        - Testar o RegisterMeet com retorno 400
+            - Fazer o setup do mock do MediatR ele tem que retornar uma exception generica
+            - Chama o Controller com o método RegisterMeet passando o RegisterMeetCommand
+            - Verifica se o retorno é 400            
+
+    - Testar handlers (Planejar)
