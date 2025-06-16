@@ -105,5 +105,3 @@ x Teste XUnit
             x Fazer o setup do mock do MediatR ele tem que retornar uma exception generica
             x Chama o Controller com o método RegisterMeet passando o RegisterMeetCommand
             x Verifica se o retorno é 400            
-
-    - Testar handlers (Planejar)
