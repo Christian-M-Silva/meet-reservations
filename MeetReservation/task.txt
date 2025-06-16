@@ -101,9 +101,9 @@ x Teste XUnit
             - Chama o Controller com o método RegisterMeet passando o RegisterMeetCommand
             - Verifica se o retorno é 409 com a mensagem "Sala ocupada durante esse periodo, tente outra sala ou um outro horário"
 
-        - Testar o RegisterMeet com retorno 400
-            - Fazer o setup do mock do MediatR ele tem que retornar uma exception generica
-            - Chama o Controller com o método RegisterMeet passando o RegisterMeetCommand
-            - Verifica se o retorno é 400            
+        x Testar o RegisterMeet com retorno 400
+            x Fazer o setup do mock do MediatR ele tem que retornar uma exception generica
+            x Chama o Controller com o método RegisterMeet passando o RegisterMeetCommand
+            x Verifica se o retorno é 400            
 
     - Testar handlers (Planejar)

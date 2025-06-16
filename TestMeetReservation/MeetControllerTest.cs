@@ -5,11 +5,7 @@ using MeetReservation.Models.Entities;
 using MeetReservation.Models.Queries;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace TestMeetReservation
 {
@@ -23,6 +19,14 @@ namespace TestMeetReservation
             _mediator = new Mock<IMediator>();
             _meetController = new MeetController(_mediator.Object);
         }
+
+        readonly RegisterMeetCommand meetCommand = new()
+        {
+            Responsible = "Christian",
+            Room = 1,
+            StartTime = DateTime.Now,
+            EndTime = DateTime.Now.AddHours(1)
+        };
 
         [Fact]
         public async Task ListAllMeetFluxoCertoRetornarOk()
@@ -60,13 +64,7 @@ namespace TestMeetReservation
         [Fact]
         public async Task RegisterMeetFluxoCertoRetornarOk()
         {
-            RegisterMeetCommand meetCommand = new()
-            {
-                Responsible = "Christian",
-                Room = 1,
-                StartTime = DateTime.Now,
-                EndTime = DateTime.Now.AddHours(1)
-            };
+           
 
             _mediator.Setup(m => m.Send(meetCommand, It.IsAny<CancellationToken>()))
                 .Verifiable();
@@ -76,6 +74,18 @@ namespace TestMeetReservation
             Assert.IsType<OkObjectResult>(result);
 
             _mediator.Verify(m => m.Send(meetCommand, It.IsAny<CancellationToken>()), Times.Once);
+        }
+
+        [Fact]
+        public async Task RegisterMeetFluxoErroGnericoRetornarBadRequest()
+        {
+            _mediator.Setup(m => m.Send(meetCommand, It.IsAny<CancellationToken>()))
+                .ThrowsAsync(new Exception("Erro inesperado"));
+
+            ActionResult result = await _meetController.RegisterMeet(meetCommand);
+
+            Assert.IsType<BadRequestObjectResult>(result);
+
         }
     }
 }
